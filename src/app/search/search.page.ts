@@ -15,7 +15,7 @@ export class SearchPage implements OnInit {
   }
 
   initializeItems() {
-    this.items = ["Ram", "gopi", "dravid"];
+    this.items = ["All will come together", "what if things are not in order", "order is a direction","There must be words with x or z"];
     this.isItemAvailable = true;
   }
 
@@ -35,6 +35,6 @@ export class SearchPage implements OnInit {
   }
 
   selectedItem(event) : void {
-    console.log(event);
+    alert(event);
   }
 }
