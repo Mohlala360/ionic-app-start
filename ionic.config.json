@@ -1,5 +1,7 @@
 {
   "name": "freshApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
