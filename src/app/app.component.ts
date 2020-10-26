@@ -14,14 +14,29 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Geolocation',
-      url: '/home/geolocation',
-      icon: 'location'
+      title: 'Profile',
+      url: '/home/profile',
+      icon: 'man'
     },
     {
-      title: 'Search',
+      title: 'Contacts',
+      url: '/home/geolocation',
+      icon: 'location'
+    },    
+    {
+      title: 'Work history',
       url: '/home/search',
       icon: 'search'
+    },
+    {
+      title: 'Education',
+      url: '/home/education',
+      icon: 'medal'
+    },
+    {
+      title: 'Projects',
+      url: '/home/projects',
+      icon: 'pulse'
     },
   ];
   

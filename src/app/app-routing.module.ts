@@ -18,7 +18,20 @@ const routes: Routes = [
   {
     path: 'home/search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
-  }
+  },
+  {
+    path: 'home/education',
+    loadChildren: () => import('./education/education.module').then( m => m.EducationPageModule)
+  },
+  {
+    path: 'home/profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'home/projects',
+    loadChildren: () => import('./projects/projects.module').then( m => m.ProjectsPageModule)
+  },
+
 
 ];
 
