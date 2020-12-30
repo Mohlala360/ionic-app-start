@@ -20,12 +20,12 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Contacts',
-      url: '/geolocation',
+      url: '/profile',
       icon: 'location'
     },    
     {
       title: 'Work history',
-      url: '/search',
+      url: '/profile',
       icon: 'search'
     },
     {
