@@ -5,5 +5,102 @@
 </ion-header>
 
 <ion-content>
-  <h2>this works</h2>
+  <ion-list id="labels-list">
+
+    <table>
+      <tr>
+        <td>
+          <ion-card>
+            <img src="../../assets/images/1.jpg" width="100%" height="350px">
+          </ion-card>
+        </td>
+        <td>
+          <ion-card>
+            <ion-list-header>
+              <h2>Education</h2>
+            </ion-list-header>
+            <ion-card>
+              <table class="fullTable">
+                <tr>
+                  <th>Instution </th>
+                  <th>Highest Grade </th>
+                  <th>Duration </th>
+                  <th>Status </th>
+                </tr>
+                <tr *ngFor="let d of education">
+                  <td> {{d.instution}} </td>
+                  <td> {{d.highestGrade}} </td>
+                  <td> {{d.duration}} </td>
+                  <td> {{d.status}} </td>
+                </tr>
+              </table>
+            </ion-card>
+          </ion-card>
+          <ion-card>
+            <ion-list-header>
+              <h2>Projects</h2>
+            </ion-list-header>
+            <ion-card>
+              <table class="fullTable">
+                <tr>
+                  <th>Name </th>
+                  <th>State </th>
+                  <th>Relationship </th>
+                  <th>Technologies </th>
+                  <th>Active years</th>
+                </tr>
+                <tr>
+                  <td> Name Data </td>
+                  <td> State Data </td>
+                  <td> Relationship Data </td>
+                  <td> Technologies Data </td>
+                  <td> Active years Data </td>
+                </tr>
+              </table>
+            </ion-card>
+          </ion-card>
+        </td>
+        <td>
+          <ion-card>
+            <ion-list-header>
+              <h2>Contacts</h2>
+            </ion-list-header>
+            <ion-card>
+              <label>Email : </label><input style="width: auto;" readonly placeholder="stanleymohlala83@gmail.com">
+              <br />
+              <label>Cell : </label><input style="width: auto;" readonly placeholder="078 289 6274 / 064 501 1889">
+              <br />
+              <label>LinkedIn : </label><input style="width: auto;" readonly placeholder="somthing"> <br />
+              <label>StackOverflow : </label><input style="width: auto;" readonly placeholder="somthing"> <br />
+              <label>Github : </label><input style="width: auto;" readonly placeholder="somthing"> <br />
+              <label>Address : </label><input style="width: auto;" readonly placeholder="my address"> <br />
+            </ion-card>
+          </ion-card>
+        </td>
+      </tr>
+    </table>
+    <ion-card>
+      <ion-list-header>
+        <h2>Work experience</h2>
+      </ion-list-header>
+      <ion-card>
+        <table class="fullTable">
+          <tr>
+            <th>Name </th>
+            <th>Position </th>
+            <th>Reference </th>
+            <th>Contact </th>
+            <th>Duration</th>
+          </tr>
+          <tr>
+            <td> Name Data </td>
+            <td> Position Data </td>
+            <td> Reference Data </td>
+            <td> Contact Data </td>
+            <td> Duration Data </td>
+          </tr>
+        </table>
+      </ion-card>
+    </ion-card>
+  </ion-list>
 </ion-content>

@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+
+  education: any[];
+
+  constructor() {
+    this.education = [];
+  }
 
   ngOnInit() {
+    this.getEducation();
+  }
+
+  getEducation(): void {
+    this.education.push({ instution: "TUT", highestGrade: "Diploma", duration: "2 yrs", status: "complete" });
+    this.education.push({ instution: "UL", highestGrade: "Degree", duration: "7 yrs", status: "In progress" });  
   }
 
 }
