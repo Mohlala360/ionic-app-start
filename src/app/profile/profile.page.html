@@ -26,12 +26,14 @@
                   <th>Highest Grade </th>
                   <th>Duration </th>
                   <th>Status </th>
+                  <th></th>
                 </tr>
                 <tr *ngFor="let d of education">
                   <td> {{d.instution}} </td>
                   <td> {{d.highestGrade}} </td>
                   <td> {{d.duration}} </td>
                   <td> {{d.status}} </td>
+                  <td><a [routerLink]="['/education']">more ..</a></td>
                 </tr>
               </table>
             </ion-card>
@@ -47,14 +49,16 @@
                   <th>State </th>
                   <th>Relationship </th>
                   <th>Technologies </th>
-                  <th>Active years</th>
+                  <th>Active </th>
+                  <th></th>
                 </tr>
-                <tr>
-                  <td> Name Data </td>
-                  <td> State Data </td>
-                  <td> Relationship Data </td>
-                  <td> Technologies Data </td>
-                  <td> Active years Data </td>
+                <tr *ngFor="let project of projects">
+                  <td> {{project.name }} </td>
+                  <td> {{project.state }} </td>
+                  <td> {{project.relationship }} </td>
+                  <td> {{project.technologies.a }} </td>
+                  <td> {{project.activeYear.from }} - {{project.activeYear.to }} </td>
+                  <td><a [routerLink]="['/projects']">more ..</a></td>
                 </tr>
               </table>
             </ion-card>
@@ -66,14 +70,18 @@
               <h2>Contacts</h2>
             </ion-list-header>
             <ion-card>
-              <label>Email : </label><input style="width: auto;" readonly placeholder="stanleymohlala83@gmail.com">
-              <br />
-              <label>Cell : </label><input style="width: auto;" readonly placeholder="078 289 6274 / 064 501 1889">
-              <br />
-              <label>LinkedIn : </label><input style="width: auto;" readonly placeholder="somthing"> <br />
-              <label>StackOverflow : </label><input style="width: auto;" readonly placeholder="somthing"> <br />
-              <label>Github : </label><input style="width: auto;" readonly placeholder="somthing"> <br />
-              <label>Address : </label><input style="width: auto;" readonly placeholder="my address"> <br />
+              <div class="settings">
+                <!-- <label>Email </label><input type="text" readonly placeholder="stanleymohlala83@gmail.com"> -->
+                <label>Email </label> <span>{{contact.email}}</span>
+                <label>Cell </label><span>{{contact.cell}} <br /> {{contact.cell2}}</span>
+                <label>LinkedIn </label><span><a
+                    href="https://www.linkedin.com/in/stanley-mohlala-736226178/">stanley-mohlala</a></span>
+                <label>StackOverflow </label><span><a
+                    href="https://stackoverflow.com/users/7296835/stanley-mohlala">stanley-mohlala</a></span>
+                <label>Github </label><span><a href="https://github.com/Mohlala360">Mohlala360</a></span>
+                <label>Address </label><span>{{contact.street}} <br />
+                  {{contact.sub}}<br />{{contact.city}}<br />{{contact.code}}</span>
+              </div>
             </ion-card>
           </ion-card>
         </td>
@@ -91,13 +99,15 @@
             <th>Reference </th>
             <th>Contact </th>
             <th>Duration</th>
+            <th></th>
           </tr>
-          <tr>
-            <td> Name Data </td>
-            <td> Position Data </td>
-            <td> Reference Data </td>
-            <td> Contact Data </td>
-            <td> Duration Data </td>
+          <tr *ngFor="let experience of workExperiences">
+            <td> {{experience.name}} </td>
+            <td> {{experience.position}} </td>
+            <td> {{experience.reference.nam}} {{experience.reference.nam}} </td>
+            <td> {{experience.contact}} </td>
+            <td> {{experience.duration.from}} - {{experience.duration.from}}</td>
+            <td><a [routerLink]="['/profile']">more ..</a></td>
           </tr>
         </table>
       </ion-card>
