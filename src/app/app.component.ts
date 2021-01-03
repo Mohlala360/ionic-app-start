@@ -17,15 +17,10 @@ export class AppComponent implements OnInit {
       title: 'Profile',
       url: '/profile',
       icon: 'man'
-    },
-    {
-      title: 'Contacts',
-      url: '/profile',
-      icon: 'location'
     },    
     {
       title: 'Work history',
-      url: '/profile',
+      url: '/work-history',
       icon: 'search'
     },
     {
