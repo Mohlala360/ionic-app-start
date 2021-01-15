@@ -6,63 +6,32 @@
 
 <ion-content>
   <ion-card>
-    <ion-list-header>
-      <h2>Step 1</h2>
-    </ion-list-header>
     <ion-card>
-      <div class="settings">
-        <label>Name </label> <input type="text" [(ngModel)]="user.name" id="txtName" name="name"
-          placeholder="Stanley Mohlala">
-        <label>Cell </label><input type="text" [(ngModel)]="user.cell" id="txtCell" name="cell"
-          placeholder="000 000 0000">
-        <label>Email </label><input type="text" [(ngModel)]="user.email" id="txtEmail" name="email"
-          placeholder="name@example.com">
-      </div>
+      <!-- <ion-button class="btnPriv" [routerLink]="['/projects/pool-vehicle']">Add book car</ion-button> -->
+      <ion-list-header>
+        <h2>book car history</h2>
+      </ion-list-header>
+      <ion-button class="btnNext" [routerLink]="['/projects/pool-vehicle/add']">Add book car</ion-button>
+      <table class="fullTable">
+        <tr>
+          <th>Reference# </th>          
+          <th>Requestor </th>
+          <th>Registration Number </th>
+          <th>Date From </th>
+          <th>Date To </th>
+          <th>Duration (days)</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let booking of bookings">
+          <td> {{booking.referenceNo}} </td>
+          <td> {{booking.user.name}} </td>
+          <td> {{booking.car.registrationNumber}} </td>
+          <td> {{booking.bookingFrom}} </td>
+          <td> {{booking.bookingTo}} </td>
+          <td> {{durationInDays(booking)}} </td>
+          <td><a [routerLink]="['/projects/pool-vehicle',booking.carBookingId,'edit']">edit</a></td>
+        </tr>
+      </table>
     </ion-card>
-    <div class="btnNext">
-      <!-- <ion-button *ngIf="steps.prev" (click)="prevStep()" size="small" color="warning">Prev</ion-button> -->
-      <ion-button *ngIf="steps.next" (click)="nextStep()" size="small" color="success">Next</ion-button>
-    </div>
-    <ion-list-header>
-      <h2>Step 2</h2>
-    </ion-list-header>
-    <ion-card>
-      <div class="settings">
-        <label>Registration Number </label>
-        <select class="data-list-input" style="width:190px;">
-          <option value="">ST 00 MO GP</option>
-          <option *ngFor="let vehicle of vehicles" value="vehicle.registrationNumber">{{vehicle.registrationNumber}}
-          </option>
-        </select>
-
-        <label>Pool reason </label><textarea [(ngModel)]="pool.reason" id="txtPoolReason" name="poolReason"
-          placeholder="Office"></textarea>
-
-        <label>From </label>
-        <div><input type="date"><input type="time" value="12:00" step="900"></div>
-        <label>To </label>
-        <div><input type="date"><input type="time" value="13:00" step="900"></div>
-      </div>
-    </ion-card>
-    <div class="btnNext">
-      <ion-button size="small" color="success">Next</ion-button>
-    </div>
-    <ion-list-header>
-      <h2>Step 3</h2>
-    </ion-list-header>
-    <ion-card>
-      <div class="settings">
-        <label>Name </label> <input type="text" placeholder="Stanley Mohlala">
-        <label>Cell </label><input type="text" placeholder="000 000 0000">
-        <label>Email </label><input type="text" placeholder="name@example.com">
-      </div>
-    </ion-card>
-    <div class="btnNext">
-      <ion-button size="small" color="success">Next</ion-button>
-    </div>
   </ion-card>
-  <div class="btn">
-    <ion-button>Submit</ion-button>
-    <ion-button color="warning">Cancel</ion-button>
-  </div>
 </ion-content>
