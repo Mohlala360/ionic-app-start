@@ -22,10 +22,10 @@
           placeholder="name@example.com">
       </div>
     </ion-card>
-    <div *ngIf="!editMode" class="btnNext">
-      <!-- <ion-button *ngIf="steps.prev" (click)="prevStep()" size="small" color="warning">Prev</ion-button> -->
+    <!-- <div *ngIf="!editMode" class="btnNext">
+       <ion-button *ngIf="steps.prev" (click)="prevStep()" size="small" color="warning">Prev</ion-button> 
       <ion-button *ngIf="steps.next" (click)="nextStep()" size="small" color="success">Next</ion-button>
-    </div>
+    </div> -->
     <ion-list-header>
       <h2>Step 2</h2>
     </ion-list-header>
@@ -35,9 +35,8 @@
         <div>
           <input type="text" [(ngModel)]="booking.car.registrationNumber" id="txtRegistrationNumber"
             name="registrationNumber">
-          <select (change)="selectedCar(car)" class="data-list-input" style="width:190px;">
-            <option  *ngFor="let car of cars" 
-              value="{{booking.car.registrationNumber}}">
+          <select (change)="selectedCar($event)" class="data-list-input" style="width:190px;">
+            <option *ngFor="let car of cars" value="{{car.carId}} ">
               {{car.registrationNumber}}
             </option>
           </select>
@@ -46,17 +45,19 @@
           name="bookingReason" placeholder="Office"></textarea>
 
         <label>From </label>
-        <div><input type="date"><input type="time" value="12:00" step="900"></div>
+        <div><input [(ngModel)]="booking.bookingFrom" id="txtbookingFromDate" name="bookingFrom" type="date"
+            value="booking.bookingFrom"><input type="time" value="12:00" id="txtbookingFromTime" step="900"></div>
         <label>To </label>
-        <div><input type="date"><input type="time" value="13:00" step="900"></div>
+        <div><input [(ngModel)]="booking.bookingTo" id="txtbookingToDate" name="bookingTo" type="date"><input
+            type="time" value="13:00" id="txtbookingToTime" step="900"></div>
       </div>
     </ion-card>
-    <div *ngIf="!editMode" class="btnNext">
+    <!-- <div *ngIf="!editMode" class="btnNext">
       <ion-button size="small" color="success">Next</ion-button>
-    </div>
+    </div> -->
   </ion-card>
   <div class="btn">
-    <ion-button>Submit</ion-button>
+    <ion-button (click)="submit()">Submit</ion-button>
     <ion-button color="warning">Cancel</ion-button>
     <ion-button [routerLink]="['/projects']">Back</ion-button>
   </div>
