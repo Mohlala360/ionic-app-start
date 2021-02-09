@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppService } from 'src/app/api/app.service';
+import { AppService, TempCarBooking } from 'src/app/api/app.service';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-pool-vehicle',
@@ -16,6 +18,11 @@ export class PoolVehiclePage implements OnInit {
   editMode: any;
   title: string;
   car: any;
+
+  from:Date;
+  to:Date;
+  fromTime:any;
+  toTime:any;
 
   constructor(
     private activatedRoute: ActivatedRoute, private appService: AppService, private router: Router) {
@@ -36,22 +43,19 @@ export class PoolVehiclePage implements OnInit {
         console.log(this.booking);
       } else {
         this.title = `Add car booking `;
-        this.booking = {
-          carBookingId: 0,
-          bookingReason: "",
-          user: {
-            name: "",
-            email: "",
-            cell: "",
-            userId: 0
-          },
-          car: {
-            carId: 0,
-            registrationNumber: "",
-          },
-          bookingFrom: "",
-          bookingTo: ""
+        this.booking = new TempCarBooking();
+        this.booking.user = {
+          name: "",
+          email: "",
+          cell: "",
+          userId: 0
         };
+        this.booking.
+          car = {
+          carId: 0,
+          registrationNumber: "",
+        };
+        this.from = new Date();
       }
     });
 
@@ -66,36 +70,27 @@ export class PoolVehiclePage implements OnInit {
     var nameValue = (<HTMLInputElement>document.getElementById("txtName")).value;
     var cellValue = (<HTMLInputElement>document.getElementById("txtCell")).value;
     var emailValue = (<HTMLInputElement>document.getElementById("txtEmail")).value;
-    var bookingReasonValue = (<HTMLInputElement>document.getElementById("txtbookingReason")).value;
-    var bookingFromDateValue = (<HTMLInputElement>document.getElementById("txtbookingFromDate")).value + ' ' +
-      (<HTMLInputElement>document.getElementById("txtbookingFromTime")).value;
-    var bookingToDateValue = (<HTMLInputElement>document.getElementById("txtbookingToDate")).value + ' ' +
-      (<HTMLInputElement>document.getElementById("txtbookingToTime")).value;
+    var surnameValue = (<HTMLInputElement>document.getElementById("txtSurame")).value;
+    //var bookingReasonValue = (<HTMLInputElement>document.getElementById("txtbookingReason")).value;
+    var bookingFromDateValue = new Date((<HTMLInputElement>document.getElementById("txtbookingFromDate")).value + ' ' +
+      (<HTMLInputElement>document.getElementById("txtbookingFromTime")).value);
+    var bookingToDateValue = new Date((<HTMLInputElement>document.getElementById("txtbookingToDate")).value + ' ' +
+      (<HTMLInputElement>document.getElementById("txtbookingToTime")).value);
 
     this.user = {
       userId: 0,
       name: nameValue,
-      cell: cellValue,
-      email: emailValue
+      cellPhonenumber: cellValue,
+      email: emailValue,
+      surname: surnameValue
     };
 
     console.log(this.user);
 
-    this.booking = {
-      carBookingId: 0,
-      bookingReason: bookingReasonValue,
-      userId: 0,
-      user: this.user,
-      bookingTo: bookingToDateValue,
-      bookingFrom: bookingFromDateValue,
-      carId: this.car.carId,
-      car: this.car
-    };
-
-    this.steps = {
-      prev: true,
-      next: true
-    };
+    this.booking.car = this.car;
+    this.booking.user = this.user;
+    this.booking.bookingTo = moment(bookingToDateValue).format('YYYY-MM-DDTHH:mm');
+    this.booking.bookingFrom = moment(bookingFromDateValue).format('YYYY-MM-DDTHH:mm');
   }
 
   getCars() {

@@ -10,16 +10,42 @@
       <h2>Step 1</h2>
     </ion-list-header>
     <ion-card>
-      <div class="settings">
+      <!-- <div class="settings">
         <label>Name </label>
         <div>
           <input type="text" [(ngModel)]="booking.user.name" id="txtName" name="name" placeholder="Stanley">
           <input type="text" [(ngModel)]="booking.user.surname" id="txtSurame" name="surname" placeholder="Mohlala">
         </div>
-        <label>Cell </label><input type="text" [(ngModel)]="booking.user.cell" id="txtCell" name="cell"
+        <label>Cell </label><input type="text" [(ngModel)]="booking.user.cellPhonenumber" id="txtCell" name="cell"
           placeholder="000 000 0000">
         <label>Email </label><input type="text" [(ngModel)]="booking.user.email" id="txtEmail" name="email"
           placeholder="name@example.com">
+      </div> -->
+      <div class="settings">
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.name" value="" class="form-control" type="text" name="txtName" id="txtName"
+            required="required" placeholder="Name">
+          <label for="txtName">Name</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.surname" value="" class="form-control" type="text" name="txtSurame"
+            id="txtSurame" required="required" placeholder="Surname">
+          <label for="txtSurame">Surame</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.cellPhonenumber" value="" class="form-control" type="text" name="txtCell"
+            id="txtCell" required="required" placeholder="Cellphonenumber">
+          <label for="txtCell">Cell</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.email" value="" class="form-control" type="text" name="txtEmail"
+            id="txtEmail" required="required" placeholder="Email">
+          <label for="txtEmail">Email</label>
+          <div class="req-mark">*</div>
+        </div>
       </div>
     </ion-card>
     <!-- <div *ngIf="!editMode" class="btnNext">
@@ -31,18 +57,33 @@
     </ion-list-header>
     <ion-card>
       <div class="settings">
-        <label>Registration Number </label>
-        <div>
-          <input type="text" [(ngModel)]="booking.car.registrationNumber" id="txtRegistrationNumber"
-            name="registrationNumber">
-          <select (change)="selectedCar($event)" class="data-list-input" style="width:190px;">
+        <div class="input-group">
+          <input list="mylist" [(ngModel)]="booking.car.registrationNumber" value="" class="form-control" type="text"
+            name="txtRegistrationNumber" id="txtRegistrationNumber" required="required"
+            placeholder="RegistrationNumber">
+          <label for="txtRegistrationNumber">Select car</label>
+          <div class="req-mark">*</div>
+          <datalist id="mylist">
             <option *ngFor="let car of cars" value="{{car.carId}} ">
               {{car.registrationNumber}}
             </option>
-          </select>
+          </datalist>
         </div>
-        <label>Pool reason </label><textarea [(ngModel)]="booking.bookingReason" id="txtbookingReason"
-          name="bookingReason" placeholder="Office"></textarea>
+        <!-- <div class="input-group">
+          <select (change)="selectedCar($event)" class="input-group" >
+            <option id="myCars" *ngFor="let car of cars" value="{{car.carId}} ">
+              {{car.registrationNumber}}
+            </option>
+          </select>
+          <label >Select car</label>
+        </div> -->
+        <div class="input-group">
+          <textarea [(ngModel)]="booking.bookingReason" value="" class="form-control"
+            name="txtbookingReason" id="txtbookingReason" required="required" placeholder="BookingReason"></textarea>
+          <label for="txtbookingReason">Booking reason</label>
+        </div>
+        <!-- <label>Pool reason </label><textarea [(ngModel)]="booking.bookingReason" id="txtbookingReason"
+          name="bookingReason" placeholder="Office"></textarea> -->
 
         <label>From </label>
         <div><input [(ngModel)]="booking.bookingFrom" id="txtbookingFromDate" name="bookingFrom" type="date"
