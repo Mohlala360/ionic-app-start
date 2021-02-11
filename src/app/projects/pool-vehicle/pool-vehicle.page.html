@@ -10,17 +10,6 @@
       <h2>Step 1</h2>
     </ion-list-header>
     <ion-card>
-      <!-- <div class="settings">
-        <label>Name </label>
-        <div>
-          <input type="text" [(ngModel)]="booking.user.name" id="txtName" name="name" placeholder="Stanley">
-          <input type="text" [(ngModel)]="booking.user.surname" id="txtSurame" name="surname" placeholder="Mohlala">
-        </div>
-        <label>Cell </label><input type="text" [(ngModel)]="booking.user.cellPhonenumber" id="txtCell" name="cell"
-          placeholder="000 000 0000">
-        <label>Email </label><input type="text" [(ngModel)]="booking.user.email" id="txtEmail" name="email"
-          placeholder="name@example.com">
-      </div> -->
       <div class="settings">
         <div class="input-group">
           <input [(ngModel)]="booking.user.name" value="" class="form-control" type="text" name="txtName" id="txtName"
@@ -48,54 +37,42 @@
         </div>
       </div>
     </ion-card>
-    <!-- <div *ngIf="!editMode" class="btnNext">
-       <ion-button *ngIf="steps.prev" (click)="prevStep()" size="small" color="warning">Prev</ion-button> 
-      <ion-button *ngIf="steps.next" (click)="nextStep()" size="small" color="success">Next</ion-button>
-    </div> -->
     <ion-list-header>
       <h2>Step 2</h2>
     </ion-list-header>
     <ion-card>
       <div class="settings">
         <div class="input-group">
-          <input list="mylist" [(ngModel)]="booking.car.registrationNumber" value="" class="form-control" type="text"
+          <input list="myCars" [(ngModel)]="booking.car.registrationNumber" value="" class="form-control" type="text"
             name="txtRegistrationNumber" id="txtRegistrationNumber" required="required"
             placeholder="RegistrationNumber">
           <label for="txtRegistrationNumber">Select car</label>
           <div class="req-mark">*</div>
-          <datalist id="mylist">
+          <datalist id="myCars">
             <option *ngFor="let car of cars" value="{{car.carId}} ">
               {{car.registrationNumber}}
             </option>
           </datalist>
         </div>
-        <!-- <div class="input-group">
-          <select (change)="selectedCar($event)" class="input-group" >
-            <option id="myCars" *ngFor="let car of cars" value="{{car.carId}} ">
-              {{car.registrationNumber}}
-            </option>
-          </select>
-          <label >Select car</label>
-        </div> -->
         <div class="input-group">
-          <textarea [(ngModel)]="booking.bookingReason" value="" class="form-control"
-            name="txtbookingReason" id="txtbookingReason" required="required" placeholder="BookingReason"></textarea>
+          <textarea [(ngModel)]="booking.bookingReason" value="" class="form-control" name="txtbookingReason"
+            id="txtbookingReason" required="required" placeholder="BookingReason"></textarea>
           <label for="txtbookingReason">Booking reason</label>
         </div>
-        <!-- <label>Pool reason </label><textarea [(ngModel)]="booking.bookingReason" id="txtbookingReason"
-          name="bookingReason" placeholder="Office"></textarea> -->
-
-        <label>From </label>
-        <div><input [(ngModel)]="booking.bookingFrom" id="txtbookingFromDate" name="bookingFrom" type="date"
-            value="booking.bookingFrom"><input type="time" value="12:00" id="txtbookingFromTime" step="900"></div>
-        <label>To </label>
-        <div><input [(ngModel)]="booking.bookingTo" id="txtbookingToDate" name="bookingTo" type="date"><input
-            type="time" value="13:00" id="txtbookingToTime" step="900"></div>
+        <div class="input-group">
+          <ion-datetime displayFormat="D MMM YYYY H:mm" min="2021" max="2022" [(ngModel)]="booking.bookingFrom" value=""
+            name="txtbookingFromDate" id="txtbookingFromDate" required="required"></ion-datetime>
+          <label for="txtbookingFromDate">Select date from</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <ion-datetime displayFormat="D MMM YYYY H:mm" min="2021" max="2022" [(ngModel)]="booking.bookingTo" value=""
+            value="" name="txtbookingToDate" id="txtbookingToDate" required="required"></ion-datetime>
+          <label for="txtbookingToDate">Select date to</label>
+          <div class="req-mark">*</div>
+        </div>
       </div>
     </ion-card>
-    <!-- <div *ngIf="!editMode" class="btnNext">
-      <ion-button size="small" color="success">Next</ion-button>
-    </div> -->
   </ion-card>
   <div class="btn">
     <ion-button (click)="submit()">Submit</ion-button>

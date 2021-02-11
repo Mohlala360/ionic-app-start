@@ -19,10 +19,10 @@ export class PoolVehiclePage implements OnInit {
   title: string;
   car: any;
 
-  from:Date;
-  to:Date;
-  fromTime:any;
-  toTime:any;
+  from: Date;
+  to: Date;
+  fromTime: any;
+  toTime: any;
 
   constructor(
     private activatedRoute: ActivatedRoute, private appService: AppService, private router: Router) {
@@ -47,7 +47,7 @@ export class PoolVehiclePage implements OnInit {
         this.booking.user = {
           name: "",
           email: "",
-          cell: "",
+          cellPhonenumber: "",
           userId: 0
         };
         this.booking.
@@ -67,30 +67,9 @@ export class PoolVehiclePage implements OnInit {
   }
 
   setData() {
-    var nameValue = (<HTMLInputElement>document.getElementById("txtName")).value;
-    var cellValue = (<HTMLInputElement>document.getElementById("txtCell")).value;
-    var emailValue = (<HTMLInputElement>document.getElementById("txtEmail")).value;
-    var surnameValue = (<HTMLInputElement>document.getElementById("txtSurame")).value;
-    //var bookingReasonValue = (<HTMLInputElement>document.getElementById("txtbookingReason")).value;
-    var bookingFromDateValue = new Date((<HTMLInputElement>document.getElementById("txtbookingFromDate")).value + ' ' +
-      (<HTMLInputElement>document.getElementById("txtbookingFromTime")).value);
-    var bookingToDateValue = new Date((<HTMLInputElement>document.getElementById("txtbookingToDate")).value + ' ' +
-      (<HTMLInputElement>document.getElementById("txtbookingToTime")).value);
-
-    this.user = {
-      userId: 0,
-      name: nameValue,
-      cellPhonenumber: cellValue,
-      email: emailValue,
-      surname: surnameValue
-    };
-
-    console.log(this.user);
-
     this.booking.car = this.car;
-    this.booking.user = this.user;
-    this.booking.bookingTo = moment(bookingToDateValue).format('YYYY-MM-DDTHH:mm');
-    this.booking.bookingFrom = moment(bookingFromDateValue).format('YYYY-MM-DDTHH:mm');
+    this.booking.bookingTo = moment(this.booking.bookingTo).format('YYYY-MM-DDTHH:mm');
+    this.booking.bookingFrom = moment(this.booking.bookingFrom).format('YYYY-MM-DDTHH:mm');
   }
 
   getCars() {
@@ -117,5 +96,4 @@ export class PoolVehiclePage implements OnInit {
       }
     });
   }
-
 }

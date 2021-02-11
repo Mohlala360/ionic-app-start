@@ -24,8 +24,7 @@ body {
   position: relative;
   font-size: 17px;
   color: #a7b4c1;
-  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
-    box-shadow 0.1s ease-in-out;
+  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 .input-group:hover {
@@ -50,31 +49,53 @@ body {
   transition: top 0.1s ease-in-out;
 }
 
+.input-group ion-datetime {
+  position: absolute;
+  border: 0;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0);
+  top: 0;
+  height: 28px;
+  width: 100%;
+  padding: 0 53px;
+  box-sizing: border-box;
+  z-index: 3;
+  display: block;
+  color: #1a6fc4;
+  font-size: 17px;
+  font-family: "Oxygen", sans-serif;
+  transition: top 0.1s ease-in-out;
+}
+
 .input-group textarea {
-    position: absolute;
-    border: 0;
-    box-shadow: none;
-    background-color: rgba(255, 255, 255, 0);
-    top: 0;
-    height: 28px;
-    width: 100%;
-    padding: 0 53px;
-    box-sizing: border-box;
-    z-index: 3;
-    display: block;
-    color: #1a6fc4;
-    font-size: 17px;
-    font-family: "Oxygen", sans-serif;
-    transition: top 0.1s ease-in-out;
-  }
+  position: absolute;
+  border: 0;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0);
+  top: 0;
+  height: 28px;
+  width: 100%;
+  padding: 0 53px;
+  box-sizing: border-box;
+  z-index: 3;
+  display: block;
+  color: #1a6fc4;
+  font-size: 17px;
+  font-family: "Oxygen", sans-serif;
+  transition: top 0.1s ease-in-out;
+}
 
 .input-group input::placeholder {
   color: rgba(0, 0, 0, 0);
 }
 
 .input-group textarea::placeholder {
-    color: rgba(0, 0, 0, 0);
-  }
+  color: rgba(0, 0, 0, 0);
+}
+
+.input-group ion-datetime::placeholder {
+  color: rgba(0, 0, 0, 0);
+}
 
 .input-group input:focus,
 .input-group input:not(:placeholder-shown) {
@@ -83,6 +104,11 @@ body {
 
 .input-group textarea:focus,
 .input-group textarea:not(:placeholder-shown) {
+  top: 38px;
+}
+
+.input-group ion-datetime:focus,
+.input-group ion-datetime:not(:placeholder-shown) {
   top: 38px;
 }
 
@@ -111,6 +137,13 @@ body {
 
 .input-group textarea:focus + label,
 .input-group textarea:not(:placeholder-shown) + label {
+  bottom: 20px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.input-group ion-datetime:focus + label,
+.input-group ion-datetime:not(:placeholder-shown) + label {
   bottom: 20px;
   font-size: 13px;
   opacity: 0.7;
