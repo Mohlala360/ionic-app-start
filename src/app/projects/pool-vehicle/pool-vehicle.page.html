@@ -43,13 +43,13 @@
     <ion-card>
       <div class="settings">
         <div class="input-group">
-          <input list="myCars" [(ngModel)]="booking.car.registrationNumber" value="" class="form-control" type="text"
-            name="txtRegistrationNumber" id="txtRegistrationNumber" required="required"
+          <input list="myCars" (change)="selectedCar($event)" [(ngModel)]="booking.car.registrationNumber" value=""
+            class="form-control" type="text" name="txtRegistrationNumber" id="txtRegistrationNumber" required="required"
             placeholder="RegistrationNumber">
           <label for="txtRegistrationNumber">Select car</label>
           <div class="req-mark">*</div>
           <datalist id="myCars">
-            <option *ngFor="let car of cars" value="{{car.carId}} ">
+            <option *ngFor="let car of cars" value="{{car.registrationNumber}} ">
               {{car.registrationNumber}}
             </option>
           </datalist>

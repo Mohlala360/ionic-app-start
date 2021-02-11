@@ -82,7 +82,7 @@ export class PoolVehiclePage implements OnInit {
 
   selectedCar(car): void {
     let id = car.target.value;
-    this.car = this.cars.filter(b => b.carId == id)[0];
+    this.car = this.cars.filter(b => b.registrationNumber == id.replace(/\s+$/, ''))[0];
   }
 
   submit(): void {
