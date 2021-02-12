@@ -19,15 +19,15 @@
           <th>Registration Number </th>
           <th>Date From </th>
           <th>Date To </th>
-          <th>Duration (days)</th>
+          <th>Booked for </th>
           <th></th>
         </tr>
         <tr *ngFor="let booking of bookings">
           <td> {{booking.referenceNo}} </td>
-          <td> {{booking.user.name}} </td>
+          <td> {{booking.user.name}} {{booking.user.surname}} </td>
           <td> {{booking.car.registrationNumber}} </td>
-          <td> {{booking.bookingFrom}} </td>
-          <td> {{booking.bookingTo}} </td>
+          <td> {{formatDate(booking.bookingFrom)}} </td>
+          <td> {{formatDate(booking.bookingTo)}} </td>
           <td> {{durationInDays(booking)}} </td>
           <td><a [routerLink]="['/projects/pool-vehicle',booking.carBookingId,'edit']">edit</a></td>
         </tr>

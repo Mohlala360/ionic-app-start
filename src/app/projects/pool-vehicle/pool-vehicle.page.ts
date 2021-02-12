@@ -23,9 +23,11 @@ export class PoolVehiclePage implements OnInit {
   to: Date;
   fromTime: any;
   toTime: any;
+  loadData: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute, private appService: AppService, private router: Router) {
+    this.loadData = false;
   }
 
   ngOnInit() {
@@ -36,11 +38,13 @@ export class PoolVehiclePage implements OnInit {
       if (this.editMode) {
         const bookingId = +params['id'];
         this.title = `Edit car booking `;
-        const allBookings = [];
-        this.appService.getCarBookings(allBookings);
-        var selectedBooking = allBookings.filter(b => b.carBookingId == bookingId)[0];
-        this.booking = selectedBooking;
-        console.log(this.booking);
+        //const allBookings = [];
+        this.appService.getCarBooking(bookingId).subscribe((returnedBooking: any) => {
+          console.log(returnedBooking);
+          this.booking = returnedBooking;
+          this.loadData = true;
+        });
+        //console.log(this.booking);
       } else {
         this.title = `Add car booking `;
         this.booking = new TempCarBooking();
@@ -56,6 +60,7 @@ export class PoolVehiclePage implements OnInit {
           registrationNumber: "",
         };
         this.from = new Date();
+        this.loadData = true;
       }
     });
 
@@ -88,12 +93,22 @@ export class PoolVehiclePage implements OnInit {
   submit(): void {
     this.setData();
     console.log('booking = ', this.booking);
-    this.appService.addCarBooking(this.booking).subscribe((booking: any) => {
-      if (booking.referenceNo !== undefined) {
-        this.router.navigate(['/projects']);
-      } else {
-        //failing methods here
-      }
-    });
+    if (this.booking.carBookingId == 0) {
+      this.appService.addCarBooking(this.booking).subscribe((booking: any) => {
+        if (booking.referenceNo !== undefined) {
+          this.router.navigate(['/projects']);
+        } else {
+          //failing methods here
+        }
+      });
+    }else {
+      this.appService.updateCarBooking(this.booking).subscribe((booking: any) => {
+        if (booking.referenceNo !== undefined) {
+          this.router.navigate(['/projects']);
+        } else {
+          //failing methods here
+        }
+      });
+    }
   }
 }
