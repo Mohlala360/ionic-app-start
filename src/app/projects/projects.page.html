@@ -5,5 +5,33 @@
 </ion-header>
 
 <ion-content>
-  <h2>this works</h2>
+  <ion-card>
+    <ion-card>
+      <!-- <ion-button class="btnPriv" [routerLink]="['/projects/pool-vehicle']">Add book car</ion-button> -->
+      <ion-list-header>
+        <h2>book car history</h2>
+      </ion-list-header>
+      <ion-button class="btnNext" [routerLink]="['/projects/pool-vehicle/add']">Add book car</ion-button>
+      <table class="fullTable">
+        <tr>
+          <th>Reference# </th>          
+          <th>Requestor </th>
+          <th>Registration Number </th>
+          <th>Date From </th>
+          <th>Date To </th>
+          <th>Booked for </th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let booking of bookings">
+          <td> {{booking.referenceNo}} </td>
+          <td> {{booking.user.name}} {{booking.user.surname}} </td>
+          <td> {{booking.car.registrationNumber}} </td>
+          <td> {{formatDate(booking.bookingFrom)}} </td>
+          <td> {{formatDate(booking.bookingTo)}} </td>
+          <td> {{durationInDays(booking)}} </td>
+          <td><a [routerLink]="['/projects/pool-vehicle',booking.carBookingId,'edit']">edit</a></td>
+        </tr>
+      </table>
+    </ion-card>
+  </ion-card>
 </ion-content>

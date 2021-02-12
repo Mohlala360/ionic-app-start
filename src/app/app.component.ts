@@ -17,15 +17,10 @@ export class AppComponent implements OnInit {
       title: 'Profile',
       url: '/profile',
       icon: 'man'
-    },
-    {
-      title: 'Contacts',
-      url: '/profile',
-      icon: 'location'
     },    
     {
       title: 'Work history',
-      url: '/profile',
+      url: '/work-history',
       icon: 'search'
     },
     {
@@ -71,5 +66,9 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  }
+
+  getCurrentYear(): number {
+    return (new Date()).getFullYear();
   }
 }

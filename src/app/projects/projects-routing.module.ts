@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ProjectsPage
+  },
+  {
+    path: 'pool-vehicle',
+    loadChildren: () => import('./pool-vehicle/pool-vehicle.module').then( m => m.PoolVehiclePageModule)
   }
 ];
 

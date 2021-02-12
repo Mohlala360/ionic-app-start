@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="loadData">
+  <ion-card>
+    <ion-list-header>
+      <h2>Step 1</h2>
+    </ion-list-header>
+    <ion-card>
+      <div class="settings">
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.name" value="" class="form-control" type="text" name="txtName" id="txtName"
+            required="required" placeholder="Name">
+          <label for="txtName">Name</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.surname" value="" class="form-control" type="text" name="txtSurame"
+            id="txtSurame" required="required" placeholder="Surname">
+          <label for="txtSurame">Surame</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.cellPhonenumber" value="" class="form-control" type="text" name="txtCell"
+            id="txtCell" required="required" placeholder="Cellphonenumber">
+          <label for="txtCell">Cell</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <input [(ngModel)]="booking.user.email" value="" class="form-control" type="text" name="txtEmail"
+            id="txtEmail" required="required" placeholder="Email">
+          <label for="txtEmail">Email</label>
+          <div class="req-mark">*</div>
+        </div>
+      </div>
+    </ion-card>
+    <ion-list-header>
+      <h2>Step 2</h2>
+    </ion-list-header>
+    <ion-card>
+      <div class="settings">
+        <div class="input-group">
+          <input list="myCars" (change)="selectedCar($event)" [(ngModel)]="booking.car.registrationNumber" value=""
+            class="form-control" type="text" name="txtRegistrationNumber" id="txtRegistrationNumber" required="required"
+            placeholder="RegistrationNumber">
+          <label for="txtRegistrationNumber">Select car</label>
+          <div class="req-mark">*</div>
+          <datalist id="myCars">
+            <option *ngFor="let car of cars" value="{{car.registrationNumber}} ">
+              {{car.registrationNumber}}
+            </option>
+          </datalist>
+        </div>
+        <div class="input-group">
+          <textarea [(ngModel)]="booking.bookingReason" value="" class="form-control" name="txtbookingReason"
+            id="txtbookingReason" required="required" placeholder="BookingReason"></textarea>
+          <label for="txtbookingReason">Booking reason</label>
+        </div>
+        <div class="input-group">
+          <ion-datetime displayFormat="D MMM YYYY H:mm" min="2021" max="2022" [(ngModel)]="booking.bookingFrom" value=""
+            name="txtbookingFromDate" id="txtbookingFromDate" required="required"></ion-datetime>
+          <label for="txtbookingFromDate">Select date from</label>
+          <div class="req-mark">*</div>
+        </div>
+        <div class="input-group">
+          <ion-datetime displayFormat="D MMM YYYY H:mm" min="2021" max="2022" [(ngModel)]="booking.bookingTo" value=""
+            value="" name="txtbookingToDate" id="txtbookingToDate" required="required"></ion-datetime>
+          <label for="txtbookingToDate">Select date to</label>
+          <div class="req-mark">*</div>
+        </div>
+      </div>
+    </ion-card>
+  </ion-card>
+  <div class="btn">
+    <ion-button (click)="submit()">Submit</ion-button>
+    <ion-button color="warning">Cancel</ion-button>
+    <ion-button [routerLink]="['/projects']">Back</ion-button>
+  </div>
+</ion-content>

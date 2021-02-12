@@ -19,7 +19,10 @@ const routes: Routes = [
     path: 'projects',
     loadChildren: () => import('./projects/projects.module').then( m => m.ProjectsPageModule)
   },
-
+  {
+    path: 'work-history',
+    loadChildren: () => import('./work-history/work-history.module').then( m => m.WorkHistoryPageModule)
+  },
 
 ];
 

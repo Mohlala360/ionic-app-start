@@ -117,3 +117,15 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+ion-title {
+  font-size: 10px;
+  display: inline-block;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+}
