@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { PoolVehiclePageRoutingModule } from './pool-vehicle-routing.module';
 
 import { PoolVehiclePage } from './pool-vehicle.page';
+import { LoadingComponent } from 'src/app/common/loading/loading.component';
+import { FooterComponent } from 'src/app/common/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { PoolVehiclePage } from './pool-vehicle.page';
     IonicModule,
     PoolVehiclePageRoutingModule
   ],
-  declarations: [PoolVehiclePage]
+  declarations: [PoolVehiclePage,LoadingComponent,FooterComponent]
 })
 export class PoolVehiclePageModule {}

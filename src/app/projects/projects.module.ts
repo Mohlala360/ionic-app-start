@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProjectsPageRoutingModule } from './projects-routing.module';
 
 import { ProjectsPage } from './projects.page';
+import { LoadingComponent } from '../common/loading/loading.component';
+import { FooterComponent } from '../common/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { ProjectsPage } from './projects.page';
     IonicModule,
     ProjectsPageRoutingModule
   ],
-  declarations: [ProjectsPage]
+  declarations: [ProjectsPage,LoadingComponent,FooterComponent]
 })
 export class ProjectsPageModule {}

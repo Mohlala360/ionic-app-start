@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="loadData">
-  <ion-card>
+<ion-content>
+  <ion-card *ngIf="!loadData">
     <ion-list-header>
       <h2>Step 1</h2>
     </ion-list-header>
@@ -79,4 +79,6 @@
     <ion-button color="warning">Cancel</ion-button>
     <ion-button [routerLink]="['/projects']">Back</ion-button>
   </div>
+  <app-loading [loading]="loadData"></app-loading>
 </ion-content>
+<app-footer></app-footer>

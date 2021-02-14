@@ -23,7 +23,6 @@ const routes: Routes = [
     path: 'work-history',
     loadChildren: () => import('./work-history/work-history.module').then( m => m.WorkHistoryPageModule)
   },
-
 ];
 
 @NgModule({

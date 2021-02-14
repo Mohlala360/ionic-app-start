@@ -11,17 +11,18 @@ import * as moment from 'moment';
 export class ProjectsPage implements OnInit {
 
   bookings: any[];
+  loading: boolean;
   constructor(private appService: AppService) {
     this.bookings = [];
   }
 
   ngOnInit() {
-
+    this.loading = true;
     this.appService.getCarBookings().subscribe((returnedBookings: any[]) => {
       console.log(returnedBookings);
       this.bookings = returnedBookings;
+      this.loading = false;
     });
-    console.log(this.bookings);
   }
 
   durationInDays(booking): string {
@@ -39,6 +40,6 @@ export class ProjectsPage implements OnInit {
   }
 
   formatDate(date): string {
-   return moment(date).format('DD MMM YYYY HH:mm');
+    return moment(date).format('DD MMM YYYY HH:mm');
   }
 }

@@ -5,14 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card >
     <ion-card>
       <!-- <ion-button class="btnPriv" [routerLink]="['/projects/pool-vehicle']">Add book car</ion-button> -->
       <ion-list-header>
         <h2>book car history</h2>
       </ion-list-header>
       <ion-button class="btnNext" [routerLink]="['/projects/pool-vehicle/add']">Add book car</ion-button>
-      <table class="fullTable">
+      <table class="fullTable" *ngIf="!loading">
         <tr>
           <th>Reference# </th>          
           <th>Requestor </th>
@@ -34,4 +34,6 @@
       </table>
     </ion-card>
   </ion-card>
+  <app-loading [loading]="loading"></app-loading>
 </ion-content>
+<app-footer></app-footer>

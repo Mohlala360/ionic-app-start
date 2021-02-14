@@ -71,7 +71,6 @@
             </ion-list-header>
             <ion-card>
               <div class="settings">
-                <!-- <label>Email </label><input type="text" readonly placeholder="stanleymohlala83@gmail.com"> -->
                 <label>Email </label> <span>{{contact.email}}</span>
                 <label>Cell </label><span>{{contact.cell}} <br /> {{contact.cell2}}</span>
                 <label>LinkedIn </label><span><a
@@ -113,4 +112,6 @@
       </ion-card>
     </ion-card>
   </ion-list>
+  <app-loading [loading]="loading"></app-loading>
 </ion-content>
+<app-footer></app-footer>

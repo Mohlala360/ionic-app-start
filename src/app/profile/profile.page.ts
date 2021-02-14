@@ -12,6 +12,7 @@ export class ProfilePage implements OnInit {
   contact: any;
   projects: any[];
   workExperiences: any[];
+  loading: boolean;
 
   constructor() {
     this.education = [];
@@ -20,10 +21,12 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getEducations();
     this.getContact();
     this.getProjects();
     this.getWorkExperiences();
+    this.loading = false;
   }
 
   getProjects(): void {

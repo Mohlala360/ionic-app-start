@@ -27,11 +27,11 @@ export class PoolVehiclePage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute, private appService: AppService, private router: Router) {
-    this.loadData = false;
+    
   }
 
   ngOnInit() {
-
+    this.loadData = true;
     this.activatedRoute.params.subscribe(params => {
       this.editMode = !!(params['id']);
 
@@ -42,7 +42,7 @@ export class PoolVehiclePage implements OnInit {
         this.appService.getCarBooking(bookingId).subscribe((returnedBooking: any) => {
           console.log(returnedBooking);
           this.booking = returnedBooking;
-          this.loadData = true;
+          this.loadData = false;
         });
         //console.log(this.booking);
       } else {
@@ -60,7 +60,7 @@ export class PoolVehiclePage implements OnInit {
           registrationNumber: "",
         };
         this.from = new Date();
-        this.loadData = true;
+        this.loadData = false;
       }
     });
 
@@ -93,6 +93,7 @@ export class PoolVehiclePage implements OnInit {
   submit(): void {
     this.setData();
     console.log('booking = ', this.booking);
+    this.loadData = true;
     if (this.booking.carBookingId == 0) {
       this.appService.addCarBooking(this.booking).subscribe((booking: any) => {
         if (booking.referenceNo !== undefined) {
@@ -100,6 +101,7 @@ export class PoolVehiclePage implements OnInit {
         } else {
           //failing methods here
         }
+        this.loadData = false;
       });
     }else {
       this.appService.updateCarBooking(this.booking).subscribe((booking: any) => {
@@ -108,6 +110,7 @@ export class PoolVehiclePage implements OnInit {
         } else {
           //failing methods here
         }
+        this.loadData = false;
       });
     }
   }
